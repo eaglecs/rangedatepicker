@@ -12,9 +12,9 @@
     <color name="calendar_day_disabled_font">#8CE91E63</color>
     <color name="calendar_day_weekend_font">#ff0000</color>
     <color name="calendar_day_selected_font">#FFFFFF</color>
-    <color name="calendar_day_normal_font">#333333</color>
+    <color name="calendar_day_normal_font">#626262</color>
 
-    <color name="calendar_month_font">#000000</color>
-    <color name="calendar_week_font">#333333</color>
+    <color name="calendar_month_font">#626262</color>
+    <color name="calendar_week_font">#b3626262</color>
 
 </resources>

@@ -3,10 +3,10 @@
 
     <dimen name="calendar_day_height">36dp</dimen>
     <dimen name="calendar_day_gap">8dp</dimen>
-    <dimen name="calendar_day_textsize">12sp</dimen>
+    <dimen name="calendar_day_textsize">14sp</dimen>
 
     <dimen name="calendar_month_padding">16dp</dimen>
     <dimen name="calendar_month_textsize">16sp</dimen>
 
-    <dimen name="calendar_week_textsize">12sp</dimen>
+    <dimen name="calendar_week_textsize">14sp</dimen>
 </resources>
