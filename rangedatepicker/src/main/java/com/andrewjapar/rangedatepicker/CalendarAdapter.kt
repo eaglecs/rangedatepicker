@@ -29,11 +29,16 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import java.util.*
 
 internal class CalendarAdapter : RecyclerView.Adapter<CalendarViewHolder>() {
-
+    private var locale = Locale.getDefault()
     private val data: MutableList<CalendarEntity> = mutableListOf()
     var onActionListener: (CalendarEntity, Int) -> Unit = { _, _ -> }
+    fun setLocale(locale: Locale) {
+        this.locale = locale
+        notifyDataSetChanged()
+    }
 
     fun setData(newData: List<CalendarEntity>) {
         val diffCallback = CalendarDiffCallback(data, newData)
@@ -48,7 +53,10 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarViewHolder>() {
             CalendarType.MONTH.ordinal -> MonthViewHolder(
                 parent.inflate(R.layout.calendar_month_view)
             )
-            CalendarType.WEEK.ordinal -> WeekViewHolder(parent.inflate(R.layout.calendar_week_view))
+            CalendarType.WEEK.ordinal -> WeekViewHolder(
+                locale,
+                parent.inflate(R.layout.calendar_week_view)
+            )
             CalendarType.DAY.ordinal -> DayViewHolder(parent.inflate(R.layout.calendar_day_view))
             else -> EmptyViewHolder(parent.inflate(R.layout.calendar_empty_view))
         }

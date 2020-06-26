@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="calendar_day_height">36dp</dimen>
+    <dimen name="calendar_day_height">44dp</dimen>
     <dimen name="calendar_day_gap">8dp</dimen>
     <dimen name="calendar_day_textsize">14sp</dimen>
 

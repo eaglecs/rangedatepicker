@@ -8,4 +8,12 @@
     <string name="calendar_thursday">Thu</string>
     <string name="calendar_friday">Fri</string>
     <string name="calendar_saturday">Sat</string>
+
+    <string name="calendar_sunday_vn">CN</string>
+    <string name="calendar_monday_vn">Th 2</string>
+    <string name="calendar_tuesday_vn">Th 3</string>
+    <string name="calendar_wednesday_vn">Th 4</string>
+    <string name="calendar_thursday_vn">Th 5</string>
+    <string name="calendar_friday_vn">Th 6</string>
+    <string name="calendar_saturday_vn">Th 7</string>
 </resources>

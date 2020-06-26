@@ -23,11 +23,16 @@
 
 package com.andrewjapar.rangedatepicker
 
+import android.graphics.Color
+import android.graphics.Typeface
 import android.view.View
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.calendar_day_view.view.*
 import kotlinx.android.synthetic.main.calendar_month_view.view.*
+import kotlinx.android.synthetic.main.calendar_week_view.view.*
+import java.util.*
 
 internal abstract class CalendarViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     abstract fun onBind(item: CalendarEntity, actionListener: (CalendarEntity, Int) -> Unit)
@@ -43,8 +48,34 @@ internal class MonthViewHolder(private val view: View) : CalendarViewHolder(view
     }
 }
 
-internal open class WeekViewHolder(view: View) : CalendarViewHolder(view) {
+internal open class WeekViewHolder(private val locale: Locale, private val view: View) :
+    CalendarViewHolder(view) {
+    private val tvSunday by lazy { view.tvSunday }
+    private val tvMonday by lazy { view.tvMonday }
+    private val tvTuesday by lazy { view.tvTuesday }
+    private val tvWednesday by lazy { view.tvWednesday }
+    private val tvThursday by lazy { view.tvThursday }
+    private val tvFriday by lazy { view.tvFriday }
+    private val tvSaturday by lazy { view.tvSaturday }
     override fun onBind(item: CalendarEntity, actionListener: (CalendarEntity, Int) -> Unit) {
+        if (locale.language == "vn" || locale.language == "vi-VN" || locale.language == "vi") {
+            view.tvSunday.text = view.resources.getText(R.string.calendar_sunday_vn)
+            view.tvMonday.text = view.resources.getText(R.string.calendar_monday_vn)
+            view.tvTuesday.text = view.resources.getText(R.string.calendar_tuesday_vn)
+            view.tvWednesday.text = view.resources.getText(R.string.calendar_wednesday_vn)
+            view.tvThursday.text = view.resources.getText(R.string.calendar_thursday_vn)
+            view.tvFriday.text = view.resources.getText(R.string.calendar_friday_vn)
+            view.tvSaturday.text = view.resources.getText(R.string.calendar_saturday_vn)
+        } else {
+            tvSunday.text = view.resources.getText(R.string.calendar_sunday)
+            tvMonday.text = view.resources.getText(R.string.calendar_monday)
+            tvTuesday.text = view.resources.getText(R.string.calendar_thursday)
+            tvWednesday.text = view.resources.getText(R.string.calendar_wednesday)
+            tvThursday.text = view.resources.getText(R.string.calendar_thursday)
+            tvFriday.text = view.resources.getText(R.string.calendar_friday)
+            tvSaturday.text = view.resources.getText(R.string.calendar_saturday)
+        }
+
     }
 }
 
@@ -101,30 +132,39 @@ internal class DayViewHolder(view: View) : CalendarViewHolder(view) {
             val color = when (item.state) {
                 DateState.DISABLED -> R.color.calendar_day_disabled_font
                 DateState.WEEKEND -> R.color.calendar_day_weekend_font
-                else -> R.color.calendar_day_normal_font
+                else -> {
+                    if (item.date.isToday()) {
+                        R.color.calendar_day_weekend_font
+                    } else {
+                        R.color.calendar_day_normal_font
+                    }
+                }
             }
             ContextCompat.getColor(itemView.context, color)
         }
     }
 
-    private fun View.select() {
-        val drawable = ContextCompat.getDrawable(context, R.drawable.selected_day_bg)
-        background = drawable
+    private fun TextView.select() {
+        setBackgroundResource(R.drawable.selected_day_bg)
+        setTypeface(null, Typeface.BOLD)
     }
 
-    private fun View.deselect() {
+    private fun TextView.deselect() {
         background = null
+        setTypeface(null, Typeface.NORMAL);
     }
 
     private fun View.dehighlight() {
-        val color = ContextCompat.getColor(context, R.color.calendar_day_unselected_bg)
-        setBackgroundColor(color)
+        setBackgroundColor(Color.parseColor("#00000000"))
     }
 
     private fun View.highlight() {
-        val color = ContextCompat.getColor(context, R.color.calendar_day_range_selected_bg)
-        setBackgroundColor(color)
+        setBackgroundColor(Color.parseColor("#1AFF9800"))
     }
 }
 
-internal class EmptyViewHolder(view: View) : WeekViewHolder(view)
+internal class EmptyViewHolder(view: View) : CalendarViewHolder(view) {
+    override fun onBind(item: CalendarEntity, actionListener: (CalendarEntity, Int) -> Unit) {
+    }
+
+}

@@ -2,7 +2,6 @@ package com.andrewjapar.sample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.andrewjapar.rangedatepicker.CalendarPicker
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -27,9 +26,11 @@ class MainActivity : AppCompatActivity() {
         nextDate.add(Calendar.DATE, 10)
 
         calendar_view.apply {
+            setLocale(Locale("vn"))
             setRangeDate(secondCalendarDate.time, thirdCalendarDate.time)
             setSelectionDate(currentDate.time, nextDate.time)
             scrollToDate(currentDate.time)
+
         }
 
         calendar_view.setOnRangeSelectedListener { startDate, endDate, startLabel, endLabel ->

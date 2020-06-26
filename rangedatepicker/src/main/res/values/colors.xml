@@ -16,5 +16,7 @@
 
     <color name="calendar_month_font">#626262</color>
     <color name="calendar_week_font">#b3626262</color>
+    <color name="calendar_test">#F31505</color>
+
 
 </resources>

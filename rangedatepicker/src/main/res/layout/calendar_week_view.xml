@@ -7,6 +7,7 @@
     android:weightSum="7">
 
     <TextView
+        android:id="@+id/tvSunday"
         style="@style/CalendarPickerCell.Week"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -15,6 +16,7 @@
         android:text="@string/calendar_sunday" />
 
     <TextView
+        android:id="@+id/tvMonday"
         style="@style/CalendarPickerCell.Week"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -23,6 +25,7 @@
         android:text="@string/calendar_monday" />
 
     <TextView
+        android:id="@+id/tvTuesday"
         style="@style/CalendarPickerCell.Week"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -31,6 +34,7 @@
         android:text="@string/calendar_tuesday" />
 
     <TextView
+        android:id="@+id/tvWednesday"
         style="@style/CalendarPickerCell.Week"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -39,6 +43,7 @@
         android:text="@string/calendar_wednesday" />
 
     <TextView
+        android:id="@+id/tvThursday"
         style="@style/CalendarPickerCell.Week"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -47,6 +52,7 @@
         android:text="@string/calendar_thursday" />
 
     <TextView
+        android:id="@+id/tvFriday"
         style="@style/CalendarPickerCell.Week"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -55,6 +61,7 @@
         android:text="@string/calendar_friday" />
 
     <TextView
+        android:id="@+id/tvSaturday"
         style="@style/CalendarPickerCell.Week"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

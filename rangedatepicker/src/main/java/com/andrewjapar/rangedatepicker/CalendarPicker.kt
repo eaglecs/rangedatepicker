@@ -35,7 +35,7 @@ import java.util.Calendar.*
 class CalendarPicker : RecyclerView {
 
     private val timeZone = TimeZone.getDefault()
-    private val locale = Locale.getDefault()
+    private var locale = Locale.getDefault()
 
     private val calendarAdapter = CalendarAdapter()
     private val startCalendar = getInstance(timeZone, locale)
@@ -77,6 +77,13 @@ class CalendarPicker : RecyclerView {
         initAdapter()
         initListener()
     }
+
+    fun setLocale(locale: Locale){
+        this.locale = locale
+        calendarAdapter.setLocale(locale)
+    }
+
+
 
     fun setRangeDate(startDate: Date, endDate: Date) {
         require(startDate.time <= endDate.time) { "startDate can't be higher than endDate" }
@@ -180,7 +187,7 @@ class CalendarPicker : RecyclerView {
                 }
                 when (day) {
                     1 -> {
-                        calendarData.add(CalendarEntity.Month(cal.toPrettyMonthString()))
+                        calendarData.add(CalendarEntity.Month(cal.toPrettyMonthString(locale = locale)))
                         if (mShowDayOfWeekTitle) calendarData.add(CalendarEntity.Week)
                         calendarData.addAll(createStartEmptyView(dayOfWeek))
                         calendarData.add(
