@@ -73,6 +73,3 @@ ext {
     licenseUrl = 'http://www.opensource.org/licenses/mit-license.php'
     allLicenses = ["MIT"]
 }
-
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
